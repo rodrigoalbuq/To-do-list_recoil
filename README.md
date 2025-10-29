@@ -178,7 +178,7 @@ A aplicação é totalmente responsiva com breakpoints:
 
 ## 📄 Licença
 
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+Este projeto está sob a licença MIT. 
 
 ## 👨‍💻 Desenvolvedor
 
