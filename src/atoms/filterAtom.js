@@ -25,10 +25,36 @@ export const filterState = atom({
   default: loadFilterFromStorage(), // Carrega do localStorage na inicialização
   effects: [
     // Efeito para sincronizar com localStorage sempre que o filtro mudar
-    ({ onSet }) => {
+    ({ onSet, setSelf }) => {
       onSet((newFilter) => {
         saveFilterToStorage(newFilter)
       })
+
+      // Listener para mudanças no localStorage
+      const handleStorageChange = (e) => {
+        if (e.key === 'todolist-recoil-filter') {
+          const newValue = e.newValue || 'all'
+          setSelf(newValue)
+        }
+      }
+
+      window.addEventListener('storage', handleStorageChange)
+
+      // Listener personalizado para mudanças locais
+      const handleLocalChange = (e) => {
+        if (e.detail?.key === 'todolist-recoil-filter') {
+          const newValue = e.detail.value || 'all'
+          setSelf(newValue)
+        }
+      }
+
+      window.addEventListener('localStorageChange', handleLocalChange)
+
+      // Cleanup
+      return () => {
+        window.removeEventListener('storage', handleStorageChange)
+        window.removeEventListener('localStorageChange', handleLocalChange)
+      }
     }
   ]
 })

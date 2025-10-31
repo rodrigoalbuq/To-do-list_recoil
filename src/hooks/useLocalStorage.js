@@ -6,11 +6,20 @@ export const useLocalStorage = () => {
     try {
       localStorage.removeItem('todolist-recoil-todos')
       localStorage.removeItem('todolist-recoil-filter')
+      
+      // Dispara eventos personalizados para notificar os átomos
+      window.dispatchEvent(new CustomEvent('localStorageChange', {
+        detail: { key: 'todolist-recoil-todos', value: null }
+      }))
+      window.dispatchEvent(new CustomEvent('localStorageChange', {
+        detail: { key: 'todolist-recoil-filter', value: null }
+      }))
+      
       console.log('Dados limpos do localStorage')
-      // Recarrega a página para aplicar as mudanças
-      window.location.reload()
+      return { success: true, message: 'Dados limpos com sucesso!' }
     } catch (error) {
       console.error('Erro ao limpar dados do localStorage:', error)
+      return { success: false, message: 'Erro ao limpar dados. Tente novamente.' }
     }
   }
 
@@ -23,7 +32,8 @@ export const useLocalStorage = () => {
       const data = {
         todos: todos ? JSON.parse(todos) : [],
         filter: filter || 'all',
-        exportDate: new Date().toISOString()
+        exportDate: new Date().toISOString(),
+        version: '1.0.0'
       }
       
       // Cria um blob com os dados e faz download
@@ -32,10 +42,15 @@ export const useLocalStorage = () => {
       const a = document.createElement('a')
       a.href = url
       a.download = `todolist-backup-${new Date().toISOString().split('T')[0]}.json`
+      document.body.appendChild(a)
       a.click()
+      document.body.removeChild(a)
       URL.revokeObjectURL(url)
+      
+      return { success: true, message: 'Backup exportado com sucesso!' }
     } catch (error) {
       console.error('Erro ao exportar dados:', error)
+      return { success: false, message: 'Erro ao exportar dados. Tente novamente.' }
     }
   }
 

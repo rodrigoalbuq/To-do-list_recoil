@@ -22,7 +22,12 @@ export default function NewTodoForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="new-todo-form">
+    <form 
+      onSubmit={handleSubmit} 
+      className="new-todo-form"
+      role="form"
+      aria-label="Formulário para adicionar nova tarefa"
+    >
       <label htmlFor="new-todo-input" className="visually-hidden">
         Nova tarefa
       </label>
@@ -35,8 +40,20 @@ export default function NewTodoForm() {
         placeholder="Adicione uma nova tarefa..."
         className="new-todo-input"
         aria-label="Digite uma nova tarefa"
+        aria-describedby="add-todo-help"
+        required
+        minLength={1}
+        maxLength={200}
       />
-      <button type="submit" className="add-button">
+      <div id="add-todo-help" className="visually-hidden">
+        Digite o texto da tarefa e pressione Enter ou clique em Adicionar
+      </div>
+      <button 
+        type="submit" 
+        className="add-button"
+        aria-label={`Adicionar tarefa${text ? `: "${text}"` : ''}`}
+        disabled={!text.trim()}
+      >
         ➕ Adicionar
       </button>
     </form>

@@ -25,10 +25,36 @@ export const todosState = atom({
   default: loadTodosFromStorage(), // Carrega do localStorage na inicialização
   effects: [
     // Efeito para sincronizar com localStorage sempre que o estado mudar
-    ({ onSet }) => {
+    ({ onSet, setSelf }) => {
       onSet((newTodos) => {
         saveTodosToStorage(newTodos)
       })
+
+      // Listener para mudanças no localStorage (ex: quando dados são limpos)
+      const handleStorageChange = (e) => {
+        if (e.key === 'todolist-recoil-todos') {
+          const newValue = e.newValue ? JSON.parse(e.newValue) : []
+          setSelf(newValue)
+        }
+      }
+
+      window.addEventListener('storage', handleStorageChange)
+      
+      // Listener personalizado para mudanças locais
+      const handleLocalChange = (e) => {
+        if (e.detail?.key === 'todolist-recoil-todos') {
+          const newValue = e.detail.value ? JSON.parse(e.detail.value) : []
+          setSelf(newValue)
+        }
+      }
+
+      window.addEventListener('localStorageChange', handleLocalChange)
+
+      // Cleanup
+      return () => {
+        window.removeEventListener('storage', handleStorageChange)
+        window.removeEventListener('localStorageChange', handleLocalChange)
+      }
     }
   ]
 })
