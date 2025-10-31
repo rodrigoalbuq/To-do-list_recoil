@@ -255,7 +255,7 @@ A aplicação é totalmente responsiva com breakpoints:
 - [ ] **Modo escuro/claro** com preferência do sistema
 - [ ] **Undo/Redo** para operações
 
-### 🔥 Destacam Esta Implementação
+### 🔥 Destacam-se Nesta Implementação
 - **Zero Popups Nativos**: Todas as confirmações via toast elegantes
 - **Persistência Reativa**: Recoil Effects + localStorage com listeners
 - **Acessibilidade Completa**: WCAG 2.1 AA em todos os componentes  
@@ -286,7 +286,7 @@ Desenvolvido por **Rodrigo Albuquerque** usando React, Recoil e Vite.
 
 ---
 
-### 📚 Recursos de Aprendizado
+
 
 
 
