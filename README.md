@@ -103,10 +103,6 @@ src/
 ├── main.jsx              # Ponto de entrada com RecoilRoot
 └── index.css             # Estilos globais + responsividade
 ```
-├── App.css               # Estilos principais
-├── main.jsx              # Ponto de entrada
-└── index.css             # Estilos globais
-```
 
 ## 🔧 Tecnologias Utilizadas
 
@@ -189,9 +185,6 @@ src/
 - **Hover**: translateY(-2px) + box-shadow dinâmica
 - **Toast**: Slide-in/out com fade
 - **Estados**: Transições suaves entre completed/pending
-- Botões com gradientes
-- Inputs com foco suave
-- Animações de hover
 
 ## 📱 Responsividade
 
@@ -255,12 +248,14 @@ A aplicação é totalmente responsiva com breakpoints:
 - [ ] **Arrastar e soltar** para reordenação
 
 ### Melhorias Técnicas
+- [ ] **Testes automatizados** (Jest + Testing Library)
+- [ ] **Testes E2E** (Cypress/Playwright)
 - [ ] **PWA** com Service Workers
 - [ ] **Sincronização** com API externa
 - [ ] **Modo escuro/claro** com preferência do sistema
 - [ ] **Undo/Redo** para operações
 
-## � Diferenciais Técnicos
+## 🚀 Diferenciais Técnicos
 
 ### 🔥 Destacam Esta Implementação
 - **Zero Popups Nativos**: Todas as confirmações via toast elegantes
@@ -277,19 +272,29 @@ A aplicação é totalmente responsiva com breakpoints:
 - **Clean Code**: Separação clara de responsabilidades
 - **Type Safety**: Validações robustas em runtime
 
-## ��📄 Licença
+## 📄 Licença
 
-Este projeto está sob a licença MIT. 
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
 ## 👨‍💻 Desenvolvedor
 
-Desenvolvido por **Rodrigo Albuquerque** usando React, Recoil e Vite.
+Desenvolvido com ❤️ por **Rodrigo Albuquerque** usando React, Recoil e Vite.
 
 ### 🌟 Conecte-se
 - **GitHub**: [rodrigoalbuq](https://github.com/rodrigoalbuq)
-⭐ **Se gostou do projeto, deixe uma estrela!** Isso ajuda muito! Agradeço desde já! ⭐
+
+
+⭐ **Se gostou do projeto, deixe uma estrela!** Isso ajuda muito! ⭐
 
 ---
+
+### 📚 Recursos de Aprendizado
+
+- [Documentação do Recoil](https://recoiljs.org/) - Estado global para React
+- [Documentação do React](https://react.dev/) - Biblioteca de interfaces
+- [Documentação do Vite](https://vitejs.dev/) - Build tool moderna
+- [Guia de Acessibilidade](https://www.w3.org/WAI/WCAG21/quickref/) - WCAG 2.1
+- [Design System](https://designsystemsrepo.com/) - Melhores práticas
 
 
 
